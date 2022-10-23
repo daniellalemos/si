@@ -20,19 +20,19 @@ class PCA:
         """
         PCA algorithm
 
-		Parameters
-		----------
-		n_components: int
-			Number of components
+	Parameters
+	----------
+	n_components: int
+		Number of components
 
-		Attributes
-		----------
-		mean: np.ndarray
-			Mean of each feature of the dataset
-		components: np.ndarray
-			The principal components 
-		explained_variance: np.ndarray
-			The explained variance
+	Attributes
+	----------
+	mean: np.ndarray
+		Mean of each feature of the dataset
+	components: np.ndarray
+		The principal components 
+	explained_variance: np.ndarray
+		The explained variance
         """
 
         #parameters
@@ -49,10 +49,10 @@ class PCA:
         It fits PCA on the dataset
         The PCA algorithm estimates the mean, the principal components and the explained variance
 
-		Parameters
-		----------
-		dataset: Dataset
-			A Dataset object
+	Parameters
+	----------
+	dataset: Dataset
+		A Dataset object
         '''
         #calculates the means of the samples
         self.mean = np.mean(dataset.X, axis = 0) 
@@ -73,29 +73,28 @@ class PCA:
         return self
 
     def transform(self, dataset: Dataset) -> np.ndarray:
-        ''' 
-        """
-		It transforms the dataset
+        '''
+	It transforms the dataset
         Calculates the reduced dataset using the principal components
 
-		Parameters
-		----------
-		dataset: Dataset
-			A Dataset object
+	Parameters
+	----------
+	dataset: Dataset
+		A Dataset object
         '''
         centered = dataset.X - self.mean 
         V = np.transpose(self.components) 
         return np.dot(centered, V)      
     
     def fit_transform(self, dataset: Dataset) -> np.ndarray:
-        """
-		It fits and transforms the dataset
+        '''
+	It fits and transforms the dataset
 		
-		Parameters
-		----------
-		dataset: Dataset
-			A Dataset object
-		"""
+	Parameters
+	----------
+	dataset: Dataset
+		A Dataset object
+	'''
         self.fit(dataset)
         return self.transform(dataset)
 
