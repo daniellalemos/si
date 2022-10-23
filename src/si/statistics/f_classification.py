@@ -20,13 +20,6 @@ def f_classification(dataset: Dataset) -> Union[Tuple[np.ndarray, np.ndarray],Tu
     ----------
     dataset: Dataset
         A labeled dataset
-
-    Returns
-    -------
-    F: np.array, shape (n_features,)
-        F scores
-    p: np.array, shape (n_features,)
-        p-values
     """
     classes = dataset.get_classes()
     groups = [dataset.X[dataset.y == c] for c in classes]
